@@ -9,7 +9,6 @@ export const Header = () => {
     const isHome = useMemo (() => pathname === '/', [pathname])
     const {fetchCategories} = useAppStore()
     const {categories} = useAppStore()
-    console.log(categories)
 
     useEffect(() => {
         fetchCategories()
@@ -67,7 +66,8 @@ export const Header = () => {
                             <option value="">-- Seleccione --</option>
                             {
                                 categories.drinks.map(drink => (
-                                    <option key={drink.strCategory} 
+                                    <option 
+                                        key={drink.strCategory} 
                                         value={drink.strCategory}
                                     >{drink.strCategory}</option>
                                 ))
