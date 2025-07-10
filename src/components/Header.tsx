@@ -13,6 +13,7 @@ export const Header = () => {
     const isHome = useMemo (() => pathname === '/', [pathname])
     const {fetchCategories} = useAppStore()
     const {categories} = useAppStore()
+    const {searchRecipes} = useAppStore()
 
     useEffect(() => {
         fetchCategories()
@@ -33,6 +34,7 @@ export const Header = () => {
             return
         }
         //consultar la receta
+        searchRecipes(searchFilters)
     }
 
   return (
