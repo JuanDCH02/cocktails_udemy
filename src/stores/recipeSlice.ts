@@ -1,11 +1,13 @@
 import type { StateCreator } from "zustand"
 import { getCategories, getRecipeById, getRecipes } from "../services/recipe.service"
-import type { Categories, Drink, Drinks, Recipe, Recipe, SearchFilter } from "../types"
+import type { Categories, Drink, Drinks, Recipe, SearchFilter } from "../types"
 
 export type RecipesSliceType = {
     categories: Categories
     drinks: Drinks
     selectedRecipe: Recipe
+    modal: boolean
+    closeModal: () => void
     fetchCategories: () => Promise<void>
     searchRecipes: (searchFilters: SearchFilter) => Promise<void>
     selectRecipe: (id: Drink['idDrink']) => Promise<void>
@@ -21,6 +23,7 @@ export const createRecipeSlice : StateCreator<RecipesSliceType> = (set) => ({
         drinks:[]
     },
     selectedRecipe: {} as Recipe,
+    modal:false,
     fetchCategories: async () => {
         //meto en el state las categorias que me trae la api
         const categories = await getCategories()
@@ -34,7 +37,14 @@ export const createRecipeSlice : StateCreator<RecipesSliceType> = (set) => ({
     selectRecipe: async (id) => {
         //busco toda la data de la receta seleccionada
         const selectedRecipe = await getRecipeById(id) 
-        set({ selectedRecipe})
+        set({ selectedRecipe,
+            modal:true
+        })
+    },
+    closeModal: () => {
+        set({ modal:false,
+            selectedRecipe: {} as Recipe
+        })
     }
 
 })
