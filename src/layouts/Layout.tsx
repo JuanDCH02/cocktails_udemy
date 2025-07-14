@@ -1,11 +1,19 @@
 import { Header } from '../components/Header'
 import {Outlet} from 'react-router-dom'
 import Modal from '../components/Modal'
+import { useEffect } from 'react'
+import { useAppStore } from '../stores/useAppStore'
  
 export const Layout = () => {
+    const {loadFromStorage} = useAppStore()
+
+    useEffect(() => {
+        loadFromStorage()
+    }, [loadFromStorage])
     return (
         <>
-            <Header/>{/* componente a renderizar en distintas paginas*/}
+        {/* componentes a renderizar en distintas paginas*/}
+            <Header/>
             <main className='container mx-auto py-16'>
                 <Outlet />
             </main>
