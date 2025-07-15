@@ -6,6 +6,7 @@ import { useAppStore } from "../stores/useAppStore"
 export const Header = () => {
 
     const {pathname} = useLocation()
+    const {showNotification} = useAppStore()
     const [searchFilters, setSearchFilters] = useState({
         ingredient:'',
         category:''
@@ -28,9 +29,12 @@ export const Header = () => {
 
     const handleSubmit= (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
-        //validar
+        //valido que hayan datos en el form
         if(!searchFilters.category || !searchFilters.ingredient){
-            console.log('todos los campos son obligatorios')
+            showNotification({
+                text:'todos lo campos son obligatorios',
+                error:true
+            })
             return
         }
         //consultar la receta

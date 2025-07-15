@@ -12,7 +12,7 @@ export const DrinkCard = ({drink} : DrinkCardProps) => {
 
 
     return (
-        <div className="border rounded shadow-lg">
+        <div className="border border-orange-300 rounded shadow-lg">
             <div className="overflow-hidden">
                 <img src={drink.strDrinkThumb}
                     alt={`imagen de ${drink.strDrink}`}

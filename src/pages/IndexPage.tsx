@@ -22,8 +22,8 @@ export const IndexPage = () => {
             />
           ))}
       </div>)
-      :(  <p className="my-10 text-center text-2xl">
-            No hay Resultados, realiza una busqueda.
+      :(  <p className="my-10 text-center text-2xl capitalize">
+            no hay resultados, realiza una busqueda.
           </p>
       )}
     </>
