@@ -21,8 +21,8 @@ const FavoritesPage = () => {
           ))}
         </div>
       ): (  <p className="my-10 text-center text-2xl capitalize">
-            lso favoritos se mostraran aqui.
-          </p>
+              favoritos se mostraran aqui.
+            </p>
       )}
       
     </>

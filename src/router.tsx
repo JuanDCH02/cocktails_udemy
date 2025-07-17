@@ -5,6 +5,7 @@ import { Layout } from "./layouts/Layout"
 
 //hago el lazyload de la pagina de favoritos(mejora performance)
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'))
+const GenerateAI = lazy(() => import('./pages/GenerateIA'))
 
 export default function AppRouter() {
   return (
@@ -16,6 +17,11 @@ export default function AppRouter() {
                 <Route path="/favorites" element={
                   <Suspense fallback='cargando...'>
                     <FavoritesPage/>
+                  </Suspense>     
+                }/>
+                <Route path="/generate" element={
+                  <Suspense fallback='cargando...'>
+                    <GenerateAI/>
                   </Suspense>     
                 }/>
             </Route>
